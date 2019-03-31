@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/03/30/1/">
+    <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/03/30/hexo-install-ubuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Doker">
@@ -307,7 +307,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/30/1/" class="post-title-link" itemprop="url">GitHub Hexo Blog 설치 및 Next 테마 설치하기</a>
+                <a href="/2019/03/30/hexo-install-ubuntu/" class="post-title-link" itemprop="url">GitHub Hexo Blog 설치 및 Next 테마 설치하기</a>
               
             
           </h1>
@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-31 17:47:45" itemprop="dateModified" datetime="2019-03-31T17:47:45+09:00">2019-03-31</time>
+                <time title="Modified: 2019-03-31 21:00:44" itemprop="dateModified" datetime="2019-03-31T21:00:44+09:00">2019-03-31</time>
               
             
           </span>
@@ -412,41 +412,86 @@
 <li>Ubuntu 16.04 Server 64Bit </li>
 </ul>
 <hr>
-<h2 id="Nodejs-Hexo-설치"><a href="#Nodejs-Hexo-설치" class="headerlink" title="Nodejs, Hexo 설치"></a>Nodejs, Hexo 설치</h2><h3 id="Nodejs-설치"><a href="#Nodejs-설치" class="headerlink" title="Nodejs 설치"></a>Nodejs 설치</h3><p>Hexo 설치를 위해서는 Node.js 가 필수적으로 설치 되어 있어야 합니다.<br>아래 명령어를 입력하여 설치를 해줍니다.</p>
+<h2 id="Nodejs-Hexo-설치"><a href="#Nodejs-Hexo-설치" class="headerlink" title="Nodejs, Hexo 설치"></a>Nodejs, Hexo 설치</h2><h3 id="Nodejs-설치"><a href="#Nodejs-설치" class="headerlink" title="Nodejs 설치"></a>Nodejs 설치</h3><p>Hexo 설치를 위해서는 Node.js 가 필수적으로 설치되어 있어야 한다.<br>아래 명령어를 입력하여 설치를 해준다.</p>
 <pre><code>$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 $ sudo apt install -y nodejs
 </code></pre><p>이 과정이 귀찮다면….</p>
 <pre><code>$ git clone https://github.com/tenn6871/hexoinstallsh.git
 $ cd hexoinstallsh/
 $ sh install.sh 
-</code></pre><p>별거는 아니지만 스크립트로 NVM, NodeJS, Hexo-cli 한방 설치되게 만들어 뒀습니다.</p>
-<h3 id="Hexo-설치"><a href="#Hexo-설치" class="headerlink" title="Hexo 설치"></a>Hexo 설치</h3><p>깃허브에서 <strong>username</strong>.github.io repository를 생성 하셔야 합니다.</p>
+</code></pre><p>별거는 아니지만 스크립트로 NVM, NodeJS, Hexo-cli 한방 설치되게 만들어 뒀다.</p>
+<h3 id="Hexo-설치"><a href="#Hexo-설치" class="headerlink" title="Hexo 설치"></a>Hexo 설치</h3><p>깃허브에서 <strong>username</strong>.github.io repository를 생성한다.</p>
 <p><img src="https://i.imgur.com/IfNCPpG.png" alt="1" title="github repo"></p>
-<p>repository 성공적으로 끝나셨다면 아래 명령어를 입력하여 Hexo를 설치 합니다.</p>
-<pre><code>$ sudo npm install hexo-cli -g ##node설치시 sh로 설치하셨다면 skip
+<p>repository 생성이 끝났다면 아래 명령어를 입력하여 Hexo와 배포를 위한 플러그인을 설치한다.</p>
+<pre><code>$ sudo npm i hexo-cli -g ##node설치시 sh로 설치하셨다면 skip
 $ hexo init hexoblog
 $ cd hexoblog/
-$ npm install
-</code></pre><p>깃 블로그 운용하기 위해서는 최소한 설치가 끝났습니다.<br>Hexo 를 실행 시켜 정상적으로 동작하는 지 확인 합니다.</p>
+$ npm i
+$ npm i hexo-deployer-git -S
+</code></pre><p>Hexo를 아래와 같은 명령어로 동작시켜 정상적으로 동작하는 지 확인한다.</p>
 <pre><code>$ hexo s
 INFO  Start processing
 INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to 
-</code></pre><p> <a href="http://locahost:4000" target="_blank" rel="noopener">http://locahost:4000</a> 이나 <a href="http://127.0.0.1:4000" target="_blank" rel="noopener">http://127.0.0.1:4000</a> 으로 접속 해서 아래와 같은 화면이 정상적으로 출력 된다면 이상 없이 설치가 완료됐습니다.<br><img src="https://i.imgur.com/KZ1tJjl.png" alt="2" title="attach test"></p>
-<h4 id="Hexo-설정하기"><a href="#Hexo-설정하기" class="headerlink" title="Hexo 설정하기"></a>Hexo 설정하기</h4><p>정상적으로 설치가 마무리 됐다면 깃허브에 Push하기전 몇가지 설정이 필요합니다.<br>hexoblog/ 디렉토리 내부 <strong>“_config.yml”</strong> 파일을 vim이나 vi 로 오픈후 <strong>#URL</strong> 항목을 찾아 <strong>url:</strong> 부분을 repo 설정한 주소값으로 수정 해줍니다.</p>
+</code></pre><p><a href="http://locahost:4000이나" target="_blank" rel="noopener">http://locahost:4000이나</a> <a href="http://127.0.0.1:4000으로" target="_blank" rel="noopener">http://127.0.0.1:4000으로</a> 접속해서 아래와 같은 화면이 나온다면 이상 없이 설치가 완료되었다.<br><img src="https://i.imgur.com/KZ1tJjl.png" alt="2" title="attach test"></p>
+<h4 id="Hexo-설정하기"><a href="#Hexo-설정하기" class="headerlink" title="Hexo 설정하기"></a>Hexo 설정하기</h4><p>정상적으로 설치가 끝났다면 깃허브에 Push하기전 몇 가지 설정이 필요하다.<br>hexoblog/ 디렉토리 내부 <strong>“_config.yml”</strong> 파일을 vim이나 vi로 오픈 후 <strong>#URL</strong> 항목을 찾아 <strong>url:</strong> 부분을 repo 설정한 주소값으로 수정해준다.</p>
 <pre><code># URL
 ## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;
 url: https://username.github.io 
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
-</code></pre><p><strong>#Deployment</strong> 를 찾아서 아래와 같이 수정 해줍니다</p>
+</code></pre><p><strong>#Deployment</strong> 를 찾아서 아래와 같이 수정해준다.</p>
 <pre><code># Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   branch: master
   repo: https://github.com/username/username.github.io
-</code></pre>
+</code></pre><p>수정이 끝이 나면 Hexo 페이지의 generate 와 deploy 한다.</p>
+<pre><code>$ hexo d -g
+</code></pre><p><img src="https://i.imgur.com/FuO84Nz.png" alt="3" title="hexo d -g"></p>
+<p>정상적으로 배포가 됐다면 <a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a> 에서 확인 가능하다.</p>
+<h2 id="Next-테마-설치와-동적-배경-사용하기"><a href="#Next-테마-설치와-동적-배경-사용하기" class="headerlink" title="Next 테마 설치와 동적 배경 사용하기"></a>Next 테마 설치와 동적 배경 사용하기</h2><h3 id="Next-테마-설치"><a href="#Next-테마-설치" class="headerlink" title="Next 테마 설치"></a>Next 테마 설치</h3><p>Next 테마 설치를 위해 아래와 같이 입력한다.</p>
+<pre><code>$ cd hexoblog
+$ git clone https://github.com/theme-next/hexo-theme-next themes/next
+$ ll themes/
+</code></pre><p><img src="https://i.imgur.com/oobKOy5.png" alt="4" title="ll theme"><br>next 폴더를 확인 후 <strong>“_config.yml”</strong> 파일을 다시 오픈해주고 아래와 같이 수정해주면 된다.</p>
+<pre><code># Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+</code></pre><p> 또는 Vim 에서 오픈후 키보드에서 ; 키를 누르고 다음과 같이 입력해준다.</p>
+<pre><code>:%s/landscape/next/g
+:wq
+</code></pre><p>수정을 끝났다면 터미널에서 아래와 같은 명령어를 입력 해준다.</p>
+<pre><code>$ hexo s
+</code></pre><p><a href="http://locahost:4000이나" target="_blank" rel="noopener">http://locahost:4000이나</a> <a href="http://127.0.0.1:4000으로" target="_blank" rel="noopener">http://127.0.0.1:4000으로</a> 접속하면 페이지 디자인이 변경된걸 확인가능하다.<br><img src="https://i.imgur.com/oQLXHvP.png" alt="5" title="rev"></p>
+<h3 id="움직이는-배경-사용하기"><a href="#움직이는-배경-사용하기" class="headerlink" title="움직이는 배경 사용하기"></a>움직이는 배경 사용하기</h3><ul>
+<li><a href="https://chentging.github.io/2018/05/14/hexo%EF%BC%9A%EF%BC%88%E4%B8%89%EF%BC%89hexo-Next-%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%BD%BD%E5%92%8C%E9%85%8D%E7%BD%AE/" target="_blank" rel="noopener">Hexo-Next</a>  RSS피드등 설정 확인가능</li>
+</ul>
+<p>움직이는 배경 설치</p>
+<pre><code>$ cd hexoblog/
+$ git clone https://github.com/theme-next/theme-next-canvas-nest themes/next/source/lib/canvas-nest/
+</code></pre><p>설치가 끝났으니 정상적으로 동작할수 있도록 설정 해준다</p>
+<pre><code>$ vim themes/next/_config.yml
+</code></pre><p>설정 파일을 열어주고 키보드의 / 키를 눌러서 canvas_nest 입력하고 엔터 눌러주시면 설정할 부분으로 바로 이동 한다</p>
+<pre><code>/canvas_nest
+</code></pre><p>만약 이동이 정상적으로 안된다면 994번째 줄 쯤에 있다.</p>
+<pre><code>canvas_nest:
+enable: true
+onmobile: true # display on mobile or not
+color: &quot;0,0,255&quot; # RGB values, 선 색깔 바꿀수 있음
+opacity: 0.5 # 선 두께
+zIndex: -1 # z-index property of the background
+count: 99 # 선 개수
+</code></pre><p>  enable : <strong>false</strong> 부분을 <strong>true</strong> 으로 바꿔 준다</p>
+<ul>
+<li><a href="https://search.naver.com/search.naver?sm=tab_sug.top&amp;where=nexearch&amp;query=rgb+%EC%83%89%EC%83%81%ED%91%9C&amp;oquery=%EB%A7%9E%EC%B6%A4%EB%B2%95%EA%B2%80%EC%82%AC%EA%B8%B0&amp;tqi=U6uhhsp0J14sstVqLSRssssss0R-159333&amp;acq=rgb+&amp;acr=1&amp;qdt=0" target="_blank" rel="noopener">RGB색상표</a> - 색 바꾸고 싶을때 color 부분에서 Rgb 코드만 수정해주면 된다.</li>
+</ul>
+<p>적용된걸 확인 해보려면 다시 아래와 같은 명령어를 입력 하면 된다.</p>
+<pre><code>$ hexo s
+</code></pre><p>  <img src="https://i.imgur.com/O4tOShG.png" alt="6" title="canvas"><br>사이트에 접속해보면 마우스에 따라서 무언가가 움직이는 걸 확인할 수 있다.</p>
+
           
         
       
