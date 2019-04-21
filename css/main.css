@@ -1643,8 +1643,8 @@ pre .javascript .function {
   z-index: 9999;
   display: block;
   width: 0;
-  height: 2px;
-  background: #37c6c0;
+  height: 4px;
+  background: #BDBDBD;
 }
 .sidebar {
   position: fixed;
@@ -1772,7 +1772,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #999371;
+  background: #d96553;
 }
 .feed-link,
 .chat {
