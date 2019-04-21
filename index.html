@@ -287,6 +287,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/04/21/ngnix-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Doker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Doker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/21/ngnix-install/" class="post-title-link" itemprop="url">Ubuntu에서 Hexo로 제작한 블로그 Nginx 이용하여 웹 구축하기</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-21 14:04:52 / Modified: 15:17:42" itemprop="dateCreated datePublished" datetime="2019-04-21T14:04:52+09:00">2019-04-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Ubuntu에서-Hexo로-제작한-블로그-Nginx를-이용하여-웹-구축하기"><a href="#Ubuntu에서-Hexo로-제작한-블로그-Nginx를-이용하여-웹-구축하기" class="headerlink" title="Ubuntu에서 Hexo로 제작한 블로그 Nginx를 이용하여 웹 구축하기"></a>Ubuntu에서 Hexo로 제작한 블로그 Nginx를 이용하여 웹 구축하기</h1><h2 id="준비물"><a href="#준비물" class="headerlink" title="준비물"></a>준비물</h2><ul>
+<li><strong>Hexo가 설치된 Ubuntu</strong></li>
+</ul>
+<h2 id="설치환경"><a href="#설치환경" class="headerlink" title="설치환경"></a>설치환경</h2><ul>
+<li><strong>Ubuntu 16.04 Server 64Bit</strong></li>
+</ul>
+<h2 id="Nginx-설치-및-Conf-수정"><a href="#Nginx-설치-및-Conf-수정" class="headerlink" title="Nginx 설치 및 Conf 수정"></a>Nginx 설치 및 Conf 수정</h2><h3 id="Nginx-설치"><a href="#Nginx-설치" class="headerlink" title="Nginx 설치"></a>Nginx 설치</h3><p>원래라면 소스를 받아와 컴파일을 해야 되지만 쉽게 설치 하기위해 아래와 같은 명령어를 입력한다.</p>
+<pre><code>$ sudo apt install nginx
+</code></pre><p>정상적으로 설치가 됬다면 Nginx 가 설치된 서버의 IP주소로 웹 브라우저에 입력하여 접속 해보면 아래와 같이 환영 페이지가 뜬다면 성공이다.</p>
+<p><img src="https://i.imgur.com/lgIrdva.png" alt="1" title="Welcome to nginx!"></p>
+<h3 id="Nginx-Conf-수정"><a href="#Nginx-Conf-수정" class="headerlink" title="Nginx Conf 수정"></a>Nginx Conf 수정</h3><p>Hexo generate 할때마다 nginx 기본으로 설정된 /var/www/html 경로로 파일을 복사 하기에는 귀찮으니까  꼭 Conf 수정이 필요하다.<br>apt 로 설치하였으면 거의 <strong>/etc/nginx/nginx.conf</strong> 경로에 존재 하지만, 아래와 같은 명령어로 Conf 파일의 경로를 확인한후 해당 경로로 이동한다.</p>
+<pre><code>$ sudo find / -name nginx.conf
+$ cd /etc/nginx
+</code></pre><p>이동하고 <strong>ll</strong>(영문L두번) 명령어를 입력하면 아래와 같이 뜰것이다.<br><img src="https://i.imgur.com/vkkYjnN.png" alt="2" title="ll command"></p>
+<p><strong>sites-available</strong> 이라는 디렉토리가 보일건데 해당 폴더에 웹 서버 경로나 접속 포트 설정 할 수 있는 설정 파일이 들어있다.<br>파일명은 <strong>default</strong> 이므로 아래와 같이 따라 해주면 된다.</p>
+<pre><code>$ cd sites-available/
+$ sudo cp default default.backup
+$ sudo vim default 
+</code></pre><p>파일이 열렸다면 : 누르고 아래와 같이 입력한다.<br>여기서 바꾸는 경로는 자신의 Hexo 가 설치된 경로로 바꾸는 것이다.<br>Hexo 가 설치된 디렉토리 내부의 public 디렉토리로 이동 하여 <strong>pwd</strong> 명령어로 확인 하여 경로를 확인 하면 된다.</p>
+<pre><code>:%s/\/var\/www\/html/\/home\/username\/blog\/public/g
+:wq
+</code></pre><p><img src="https://i.imgur.com/3WKsH9x.png" alt="3" title="pwd command"></p>
+<p>수정이 끝났다면 적용 시켜주기 위해서 nginx 의 서비스 재시작이 필요하다.<br>아래와 같은 명령어로 restart 해준다.</p>
+<pre><code>$ sudo service ngnix restart
+</code></pre><p>restart 가 끝났다면 해당 서버 IP를 웹 브라우저에 입력하여 접근 해보면 아래와 같이 뜨는걸 확인 할수 있다.<br><img src="https://i.imgur.com/b3tHgvN.png" alt="4" title="Web"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/03/31/hexo-install-ubuntu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -762,7 +947,7 @@ $ vim themes/next/_config.yml
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -804,7 +989,11 @@ $ vim themes/next/_config.yml
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
