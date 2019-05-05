@@ -287,6 +287,243 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/05/05/subsonic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Doker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Doker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/05/subsonic/" class="post-title-link" itemprop="url">Ubuntu에서 subsonic 설치 및 nginx reverse proxy 설정하고 DSD 파일 불러오기</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-05 12:02:25 / Modified: 14:09:46" itemprop="dateCreated datePublished" datetime="2019-05-05T12:02:25+09:00">2019-05-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/05/subsonic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/05/subsonic/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Ubuntu-에서-Subsonic-설치-및-nginx-reverse-proxy-설정하기"><a href="#Ubuntu-에서-Subsonic-설치-및-nginx-reverse-proxy-설정하기" class="headerlink" title="Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기"></a>Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기</h1><h2 id="준비물"><a href="#준비물" class="headerlink" title="준비물"></a>준비물</h2><ul>
+<li><strong>Ubuntu</strong></li>
+<li><strong>Nginx</strong></li>
+</ul>
+<h2 id="설치환경"><a href="#설치환경" class="headerlink" title="설치환경"></a>설치환경</h2><ul>
+<li><strong>Ubuntu 16.04 Server 64Bit</strong></li>
+</ul>
+<h2 id="SubSonic-설치"><a href="#SubSonic-설치" class="headerlink" title="SubSonic 설치"></a>SubSonic 설치</h2><p>Subsonic 을 설치하고 구동하기 위해서는 JAVA가 필요하니 먼저 아래와 같은 명령어로 openjdk를 설치한다, 8버전이나 9버전이나 구동에는 아무런 문제 없지만 공식 사이트에서 8버전을 설치하라고 하니 8버전을 설치했다.</p>
+<pre><code>$ sudo apt install openjdk-8-jre ##또는 openjdk-9-jre 
+</code></pre><p>설치가 완료되었다면 <a href="http://www.subsonic.org" target="_blank" rel="noopener">Subsonic</a> 홈페이지에 들어가서 다운로드 주소를 복사를 한 뒤 wget으로 받아온다.</p>
+<pre><code>$ wget https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-6.1.5.deb
+</code></pre><p>전부 받았다면 dpkg 명령어로 패키지를 설치해준다.</p>
+<pre><code>$ sudo dpkg -i subsonic*
+</code></pre><p>설치가 끝났다면 기본 셋팅값이 root 계정에서 동작이 되도록 설정되어 있다.<br>명령창에서 sudo 없이 subsonic만 입력해본다면 권한이 부족하다고 나올 거다.<br>개인이 혼자 사용한다면 그냥 sudo로 실행시켜도 문제가 없지만 오픈해두고 사용한다면 user 계정으로 동작 되도록 꼭 바꿔줘야 한다.</p>
+<pre><code>$ cd /etc/default
+$ sudo vim subsonic
+
+:%s/root/username/g
+:wq
+</code></pre><p><img src="https://i.imgur.com/350Iald.png" alt="1" title="root"></p>
+<p>저장하고 나왔다면 서비스를 restart 시켜준다.</p>
+<pre><code>$ sudo service subsonic restart
+$ subsonic
+</code></pre><p>입력하면 sudo 없이 subsonic 만 입력해도 권한이 부족하다고 안 뜨고 아래 사진과 같이 출력 된다면 정상적으로 변경이 된 것이다.<br><img src="https://i.imgur.com/vp56gS5.png" alt="2" title="subsonic start"></p>
+<p>설치가 정상적으로 됐는지 웹 브라우저에서 <a href="http://localhost:4040" target="_blank" rel="noopener">http://localhost:4040</a> 으로 접속해본다.<br>기본 계정은 id pw 동일 admin 이다.<br><img src="https://i.imgur.com/HKnr4cn.png" alt="3" title="web attach"></p>
+<h2 id="nginx-reverse-proxy-설정하기"><a href="#nginx-reverse-proxy-설정하기" class="headerlink" title="nginx reverse proxy 설정하기"></a>nginx reverse proxy 설정하기</h2><h3 id="subsonic-설정"><a href="#subsonic-설정" class="headerlink" title="subsonic 설정"></a>subsonic 설정</h3><p>subsonic 을 설치하고 접속하려면 항상 4040을 붙여서 접속해야 되는데 이 과정이 귀찮으니 nginx 로 reverse proxy 설정을 해보겠다.<br>(subsonic 만 설치 돼있다면 구동 포트를 80포트로 변경하면 되지만 80포트에서 웹 서비스가 동작 중이면 이와 같은 방법으로 설정한다)</p>
+<p>먼저 처음에 수정했던 /etc/default/subsonic 파일을 수정한다.</p>
+<pre><code>$ sudo vim /etc/default/subsonic
+</code></pre><p>파일을 열면 SUBSONIC_ARGS 항목뒤에 –max-memory=150 이라는 옵션값만 있을거다 이 옵션값을 아래와 같이 수정한다.</p>
+<pre><code>SUBSONIC_ARGS=&quot;--max-memory=1024 --context-path=/mus&quot;
+</code></pre><p>여기서 필자는 메모리를 1024MB로 늘려주고 <a href="http://localhost/mus" target="_blank" rel="noopener">http://localhost/mus</a> 로 접속되게 설정했다.<br>만약 mus 가 아니라 다른 값을 원한다면 –context-path=/원하는주소 를 입력 해준후 저장 한후 서비스를 재시작 해준다.</p>
+<pre><code>$ sudo service subsonic restart
+</code></pre><h3 id="Nginx-설정"><a href="#Nginx-설정" class="headerlink" title="Nginx 설정"></a>Nginx 설정</h3><p>nginx 는 /etc/nginx/sites-available 경로에 있는 default 파일을 수정해주면 된다.<br>server 단에 아래와 같이 추가해준다.</p>
+<pre><code>location /mus {
+            proxy_pass http://localhost:4040/mus;
+            access_log /var/log/nginx/sub.accrss.log;
+            error_log /var/log/nginx/sub.error.log;
+    }
+</code></pre><p>wq 로 저장하고 nginx 서비스를 재시작하고 <a href="http://localhost/mus" target="_blank" rel="noopener">http://localhost/mus</a> 로 접속하면 subsonic 이 접속 되는걸 확인할수 있다.</p>
+<p><img src="https://i.imgur.com/9jMknKd.png" alt="4" title="proxy"></p>
+<h2 id="Subsonic-소소한-셋팅"><a href="#Subsonic-소소한-셋팅" class="headerlink" title="Subsonic 소소한 셋팅"></a>Subsonic 소소한 셋팅</h2><h3 id="DSD-파일-재생시키기"><a href="#DSD-파일-재생시키기" class="headerlink" title="DSD 파일 재생시키기"></a>DSD 파일 재생시키기</h3><p><img src="https://i.imgur.com/DjsbmQx.png" alt="5" title="DSD"></p>
+<p>subsonic 에 접속후 설정에서 “일반” -&gt; “음악파일 종류” 에서 맨뒤에 사진과 같이 dff dsf 를 추가 한뒤 아래쪽 저장 버튼을 누르고 변환 탭으로 넘어간다.</p>
+<p><img src="https://i.imgur.com/pvyAkJa.png" alt="6" title="ffmpeg"></p>
+<p>“파일 변환 추가” 에서 아래와 같이 추가한다.</p>
+<pre><code>변환 이름 -&gt; DSD
+원본 파일 타입 -&gt; dff dsf
+결과 파일 타입 -&gt; flac 
+1  단계 -&gt; ffmpeg -i %s -map 0:0 -sample_fmt s32 -ar 384k -v 0 -f flac -
+</code></pre><p>추가해준후 저장 버튼을 누른다.<br>만약 이 과정으로도 dsd 파일을 못 불러 온다면 /var/subsonic/db 에 subsonic.data 파일을 지워주고 미디어 스캔을 다시 해주면 된다.</p>
+<h3 id="Subsonic-웹-페이지-수정하기"><a href="#Subsonic-웹-페이지-수정하기" class="headerlink" title="Subsonic 웹 페이지 수정하기"></a>Subsonic 웹 페이지 수정하기</h3><p>subsonic 웹은 JSP로 구성되어 있다.<br>경로는 보통 /var/subsonic/jetty/759abe/webapp/WEB-INF/jsp 위치에 있다.<br>여기서 jsp 파일을 수정해주면 된다.</p>
+<h3 id="Subsonic-미디어-스캔시-한글깨짐-문제-개선"><a href="#Subsonic-미디어-스캔시-한글깨짐-문제-개선" class="headerlink" title="Subsonic 미디어 스캔시 한글깨짐 문제 개선"></a>Subsonic 미디어 스캔시 한글깨짐 문제 개선</h3><ul>
+<li><a href="https://blog.naver.com/az001a/220909592441" target="_blank" rel="noopener">출처</a></li>
+</ul>
+<p>/usr/share/subsonic 에서 subsonic.sh* 을 수정해준다.</p>
+<p>파일 상단에 아래와 같이 추가해준다.</p>
+<pre><code>export LANG=&quot;ko_KR.UTF-8&quot;
+export LC_CTYPE=&quot;ko_KR.UTF-8&quot;
+</code></pre><p>추가가 완료 되면 아래로 내려와 -Djava.awt.headless=true \ 문자열 아래쪽에 아래와 같이 추가 해준다.</p>
+<pre><code>-Dfile.encoding=UTF8 \
+</code></pre><p>추가가 완료 되었으면 wq로 저장 한뒤 subsonic 서비스를 재시작 시켜준다.</p>
+<pre><code>$ sudo service subsonic restart
+</code></pre><h4 id="그래도-한글이-깨진다면…"><a href="#그래도-한글이-깨진다면…" class="headerlink" title="그래도 한글이 깨진다면….."></a>그래도 한글이 깨진다면…..</h4><pre><code>$ sudo apt install python-mutagen  
+</code></pre><p>설치후 한글이 mp3 파일이 있는 경로 이동후 아래와 같이 입력한다.</p>
+<pre><code>$ mid3iconv -e cp949 *.mp3
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/04/21/ngnix-install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -986,7 +1223,7 @@ count: 99 # 선 개수
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1032,7 +1269,15 @@ count: 99 # 선 개수
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>

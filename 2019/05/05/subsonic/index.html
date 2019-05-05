@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="Ubuntu 에서 Hexo 설치필요한것들 Github 계정  Git   설치 환경 Ubuntu 16.04 Server 64Bit    Nodejs, Hexo 설치Nodejs 설치Hexo 설치를 위해서는 Node.js 가 필수적으로 설치되어 있어야 한다.아래 명령어를 입력하여 설치를 해준다. $ curl -sL https://deb.nodesource.com">
-<meta name="keywords" content="Ubuntu,Linux,Hexo,Github,Blog">
+  <meta name="description" content="Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기준비물 Ubuntu Nginx  설치환경 Ubuntu 16.04 Server 64Bit  SubSonic 설치Subsonic 을 설치하고 구동하기 위해서는 JAVA가 필요하니 먼저 아래와 같은 명령어로 openjdk를 설치한다, 8버전이나 9버전이나 구동에는 아무런 문제">
+<meta name="keywords" content="Ubuntu,Linux,Nginx,Music,Media server,Subsonic,Reverse proxy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitHub Hexo Blog 설치 및 Next 테마 설치하기">
-<meta property="og:url" content="http://tenn6871.github.io/2019/03/31/hexo-install-ubuntu/index.html">
+<meta property="og:title" content="Ubuntu에서 subsonic 설치 및 nginx reverse proxy 설정하고 DSD 파일 불러오기">
+<meta property="og:url" content="http://tenn6871.github.io/2019/05/05/subsonic/index.html">
 <meta property="og:site_name" content="Doker">
-<meta property="og:description" content="Ubuntu 에서 Hexo 설치필요한것들 Github 계정  Git   설치 환경 Ubuntu 16.04 Server 64Bit    Nodejs, Hexo 설치Nodejs 설치Hexo 설치를 위해서는 Node.js 가 필수적으로 설치되어 있어야 한다.아래 명령어를 입력하여 설치를 해준다. $ curl -sL https://deb.nodesource.com">
+<meta property="og:description" content="Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기준비물 Ubuntu Nginx  설치환경 Ubuntu 16.04 Server 64Bit  SubSonic 설치Subsonic 을 설치하고 구동하기 위해서는 JAVA가 필요하니 먼저 아래와 같은 명령어로 openjdk를 설치한다, 8버전이나 9버전이나 구동에는 아무런 문제">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/IfNCPpG.png">
-<meta property="og:image" content="https://i.imgur.com/KZ1tJjl.png">
-<meta property="og:image" content="https://i.imgur.com/FuO84Nz.png">
-<meta property="og:image" content="https://i.imgur.com/oobKOy5.png">
-<meta property="og:image" content="https://i.imgur.com/oQLXHvP.png">
-<meta property="og:image" content="https://i.imgur.com/O4tOShG.png">
-<meta property="og:updated_time" content="2019-04-01T03:19:14.000Z">
+<meta property="og:image" content="https://i.imgur.com/350Iald.png">
+<meta property="og:image" content="https://i.imgur.com/vp56gS5.png">
+<meta property="og:image" content="https://i.imgur.com/HKnr4cn.png">
+<meta property="og:image" content="https://i.imgur.com/9jMknKd.png">
+<meta property="og:image" content="https://i.imgur.com/DjsbmQx.png">
+<meta property="og:image" content="https://i.imgur.com/pvyAkJa.png">
+<meta property="og:updated_time" content="2019-05-05T05:09:46.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitHub Hexo Blog 설치 및 Next 테마 설치하기">
-<meta name="twitter:description" content="Ubuntu 에서 Hexo 설치필요한것들 Github 계정  Git   설치 환경 Ubuntu 16.04 Server 64Bit    Nodejs, Hexo 설치Nodejs 설치Hexo 설치를 위해서는 Node.js 가 필수적으로 설치되어 있어야 한다.아래 명령어를 입력하여 설치를 해준다. $ curl -sL https://deb.nodesource.com">
-<meta name="twitter:image" content="https://i.imgur.com/IfNCPpG.png">
+<meta name="twitter:title" content="Ubuntu에서 subsonic 설치 및 nginx reverse proxy 설정하고 DSD 파일 불러오기">
+<meta name="twitter:description" content="Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기준비물 Ubuntu Nginx  설치환경 Ubuntu 16.04 Server 64Bit  SubSonic 설치Subsonic 을 설치하고 구동하기 위해서는 JAVA가 필요하니 먼저 아래와 같은 명령어로 openjdk를 설치한다, 8버전이나 9버전이나 구동에는 아무런 문제">
+<meta name="twitter:image" content="https://i.imgur.com/350Iald.png">
 
 
 
@@ -122,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://tenn6871.github.io/2019/03/31/hexo-install-ubuntu/">
+  <link rel="canonical" href="http://tenn6871.github.io/2019/05/05/subsonic/">
 
 
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>GitHub Hexo Blog 설치 및 Next 테마 설치하기 | Doker</title>
+  <title>Ubuntu에서 subsonic 설치 및 nginx reverse proxy 설정하고 DSD 파일 불러오기 | Doker</title>
   
 
 
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/03/31/hexo-install-ubuntu/">
+    <link itemprop="mainEntityOfPage" href="http://tenn6871.github.io/2019/05/05/subsonic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Doker">
@@ -317,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GitHub Hexo Blog 설치 및 Next 테마 설치하기
+          <h1 class="post-title" itemprop="name headline">Ubuntu에서 subsonic 설치 및 nginx reverse proxy 설정하고 DSD 파일 불러오기
 
               
             
@@ -343,24 +343,12 @@
                 
               
 
-              <time title="Created: 2019-03-31 12:25:31" itemprop="dateCreated datePublished" datetime="2019-03-31T12:25:31+09:00">2019-03-31</time>
+              <time title="Created: 2019-05-05 12:02:25 / Modified: 14:09:46" itemprop="dateCreated datePublished" datetime="2019-05-05T12:02:25+09:00">2019-05-05</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-01 12:19:14" itemprop="dateModified" datetime="2019-04-01T12:19:14+09:00">2019-04-01</time>
               
             
           </span>
@@ -396,8 +384,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/03/31/hexo-install-ubuntu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/31/hexo-install-ubuntu/" itemprop="commentCount"></span>
+                <a href="/2019/05/05/subsonic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/05/subsonic/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -425,95 +413,71 @@
       
 
       
-        <h1 id="Ubuntu-에서-Hexo-설치"><a href="#Ubuntu-에서-Hexo-설치" class="headerlink" title="Ubuntu 에서 Hexo 설치"></a>Ubuntu 에서 Hexo 설치</h1><h2 id="필요한것들"><a href="#필요한것들" class="headerlink" title="필요한것들"></a>필요한것들</h2><ul>
-<li><strong>Github 계정</strong> </li>
-<li><strong>Git</strong></li>
+        <h1 id="Ubuntu-에서-Subsonic-설치-및-nginx-reverse-proxy-설정하기"><a href="#Ubuntu-에서-Subsonic-설치-및-nginx-reverse-proxy-설정하기" class="headerlink" title="Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기"></a>Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기</h1><h2 id="준비물"><a href="#준비물" class="headerlink" title="준비물"></a>준비물</h2><ul>
+<li><strong>Ubuntu</strong></li>
+<li><strong>Nginx</strong></li>
 </ul>
-<hr>
-<h2 id="설치-환경"><a href="#설치-환경" class="headerlink" title="설치 환경"></a>설치 환경</h2><ul>
-<li>Ubuntu 16.04 Server 64Bit </li>
+<h2 id="설치환경"><a href="#설치환경" class="headerlink" title="설치환경"></a>설치환경</h2><ul>
+<li><strong>Ubuntu 16.04 Server 64Bit</strong></li>
 </ul>
-<hr>
-<h2 id="Nodejs-Hexo-설치"><a href="#Nodejs-Hexo-설치" class="headerlink" title="Nodejs, Hexo 설치"></a>Nodejs, Hexo 설치</h2><h3 id="Nodejs-설치"><a href="#Nodejs-설치" class="headerlink" title="Nodejs 설치"></a>Nodejs 설치</h3><p>Hexo 설치를 위해서는 Node.js 가 필수적으로 설치되어 있어야 한다.<br>아래 명령어를 입력하여 설치를 해준다.</p>
-<pre><code>$ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-$ sudo apt install -y nodejs
-</code></pre><p>이 과정이 귀찮다면….</p>
-<pre><code>$ git clone https://github.com/tenn6871/hexoinstallsh.git
-$ cd hexoinstallsh/
-$ sh install.sh 
-</code></pre><p>별거는 아니지만 스크립트로 NVM, NodeJS, Hexo-cli 한방 설치되게 만들어 뒀다.</p>
-<h3 id="Hexo-설치"><a href="#Hexo-설치" class="headerlink" title="Hexo 설치"></a>Hexo 설치</h3><p>깃허브에서 <strong>username</strong>.github.io repository를 생성한다.</p>
-<p><img src="https://i.imgur.com/IfNCPpG.png" alt="1" title="github repo"></p>
-<p>repository 생성이 끝났다면 아래 명령어를 입력하여 Hexo와 배포를 위한 플러그인을 설치한다.</p>
-<pre><code>$ sudo npm i hexo-cli -g ##node설치시 sh로 설치했다면 skip
-$ hexo init hexoblog
-$ cd hexoblog/
-$ npm i
-$ npm i hexo-deployer-git -S
-</code></pre><p>Hexo를 아래와 같은 명령어로 동작시켜 정상적으로 동작하는 지 확인한다.</p>
-<pre><code>$ hexo s
-INFO  Start processing
-INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to 
-</code></pre><p><a href="http://locahost:4000이나" target="_blank" rel="noopener">http://locahost:4000이나</a> <a href="http://127.0.0.1:4000으로" target="_blank" rel="noopener">http://127.0.0.1:4000으로</a> 접속해서 아래와 같은 화면이 나온다면 이상 없이 설치가 완료되었다.<br><img src="https://i.imgur.com/KZ1tJjl.png" alt="2" title="attach test"></p>
-<h4 id="Hexo-설정하기"><a href="#Hexo-설정하기" class="headerlink" title="Hexo 설정하기"></a>Hexo 설정하기</h4><p>정상적으로 설치가 끝났다면 깃허브에 Push하기전 몇 가지 설정이 필요하다.<br>hexoblog/ 디렉토리 내부 <strong>“_config.yml”</strong> 파일을 vim이나 vi로 오픈 후 <strong>#URL</strong> 항목을 찾아 <strong>url:</strong> 부분을 repo 설정한 주소값으로 수정해준다.</p>
-<pre><code># URL
-## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;
-url: https://username.github.io 
-root: /
-permalink: :year/:month/:day/:title/
-permalink_defaults:
-</code></pre><p><strong>#Deployment</strong> 를 찾아서 아래와 같이 수정해준다.</p>
-<pre><code># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  branch: master
-  repo: https://github.com/username/username.github.io
-</code></pre><p>수정이 끝이 나면 Hexo 페이지의 generate 와 deploy 한다.</p>
-<pre><code>$ hexo d -g
-</code></pre><p><img src="https://i.imgur.com/FuO84Nz.png" alt="3" title="hexo d -g"></p>
-<p>정상적으로 배포가 됐다면 <a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a> 에서 확인 가능하다.</p>
-<h2 id="Next-테마-설치와-움직이는-배경-사용하기"><a href="#Next-테마-설치와-움직이는-배경-사용하기" class="headerlink" title="Next 테마 설치와 움직이는 배경 사용하기"></a>Next 테마 설치와 움직이는 배경 사용하기</h2><h3 id="Next-테마-설치"><a href="#Next-테마-설치" class="headerlink" title="Next 테마 설치"></a>Next 테마 설치</h3><p>Next 테마 설치를 위해 아래와 같이 입력한다.</p>
-<pre><code>$ cd hexoblog
-$ git clone https://github.com/theme-next/hexo-theme-next themes/next
-$ ll themes/
-</code></pre><p><img src="https://i.imgur.com/oobKOy5.png" alt="4" title="ll theme"><br>next 폴더를 확인 후 <strong>“_config.yml”</strong> 파일을 다시 오픈해주고 아래와 같이 수정해주면 된다.</p>
-<pre><code># Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: next
-</code></pre><p> 또는 Vim 에서 오픈후 키보드에서 ; 키를 누르고 다음과 같이 입력해준다.</p>
-<pre><code>:%s/landscape/next/g
-:wq
-</code></pre><p>수정을 끝났다면 터미널에서 아래와 같은 명령어를 입력 해준다.</p>
-<pre><code>$ hexo s
-</code></pre><p><a href="http://locahost:4000이나" target="_blank" rel="noopener">http://locahost:4000이나</a> <a href="http://127.0.0.1:4000으로" target="_blank" rel="noopener">http://127.0.0.1:4000으로</a> 접속하면 페이지 디자인이 변경된걸 확인가능하다.<br><img src="https://i.imgur.com/oQLXHvP.png" alt="5" title="rev"></p>
-<h3 id="움직이는-배경-사용하기"><a href="#움직이는-배경-사용하기" class="headerlink" title="움직이는 배경 사용하기"></a>움직이는 배경 사용하기</h3><ul>
-<li><a href="https://chentging.github.io/2018/05/14/hexo%EF%BC%9A%EF%BC%88%E4%B8%89%EF%BC%89hexo-Next-%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%BD%BD%E5%92%8C%E9%85%8D%E7%BD%AE/" target="_blank" rel="noopener">Hexo-Next</a>  RSS피드등 설정 확인가능</li>
-</ul>
-<p>움직이는 배경 설치</p>
-<pre><code>$ cd hexoblog/
-$ git clone https://github.com/theme-next/theme-next-canvas-nest themes/next/source/lib/canvas-nest/
-</code></pre><p>설치가 끝났으니 정상적으로 동작할수 있도록 설정 해준다</p>
-<pre><code>$ vim themes/next/_config.yml
-</code></pre><p>설정 파일을 열어주고 키보드의 / 키를 눌러서 canvas_nest 입력하고 엔터 눌러주시면 설정할 부분으로 바로 이동 한다</p>
-<pre><code>/canvas_nest
-</code></pre><p>만약 이동이 정상적으로 안된다면 994번째 줄 쯤에 있다.</p>
-<pre><code>canvas_nest:
-enable: true
-onmobile: true # display on mobile or not
-color: &quot;0,0,255&quot; # RGB values, 선 색깔 바꿀수 있음
-opacity: 0.5 # 선 두께
-zIndex: -1 # z-index property of the background
-count: 99 # 선 개수
-</code></pre><p>  enable : <strong>false</strong> 부분을 <strong>true</strong> 으로 바꿔 준다</p>
-<ul>
-<li><a href="https://search.naver.com/search.naver?sm=tab_sug.top&amp;where=nexearch&amp;query=rgb+%EC%83%89%EC%83%81%ED%91%9C&amp;oquery=%EB%A7%9E%EC%B6%A4%EB%B2%95%EA%B2%80%EC%82%AC%EA%B8%B0&amp;tqi=U6uhhsp0J14sstVqLSRssssss0R-159333&amp;acq=rgb+&amp;acr=1&amp;qdt=0" target="_blank" rel="noopener">RGB색상표</a> - 색 바꾸고 싶을때 color 부분에서 Rgb 코드만 수정해주면 된다.</li>
-</ul>
-<p>적용된걸 확인 해보려면 다시 아래와 같은 명령어를 입력 하면 된다.</p>
-<pre><code>$ hexo s
-</code></pre><p>  <img src="https://i.imgur.com/O4tOShG.png" alt="6" title="canvas"><br>사이트에 접속해보면 마우스에 따라서 무언가가 움직이는 걸 확인할 수 있다.</p>
+<h2 id="SubSonic-설치"><a href="#SubSonic-설치" class="headerlink" title="SubSonic 설치"></a>SubSonic 설치</h2><p>Subsonic 을 설치하고 구동하기 위해서는 JAVA가 필요하니 먼저 아래와 같은 명령어로 openjdk를 설치한다, 8버전이나 9버전이나 구동에는 아무런 문제 없지만 공식 사이트에서 8버전을 설치하라고 하니 8버전을 설치했다.</p>
+<pre><code>$ sudo apt install openjdk-8-jre ##또는 openjdk-9-jre 
+</code></pre><p>설치가 완료되었다면 <a href="http://www.subsonic.org" target="_blank" rel="noopener">Subsonic</a> 홈페이지에 들어가서 다운로드 주소를 복사를 한 뒤 wget으로 받아온다.</p>
+<pre><code>$ wget https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-6.1.5.deb
+</code></pre><p>전부 받았다면 dpkg 명령어로 패키지를 설치해준다.</p>
+<pre><code>$ sudo dpkg -i subsonic*
+</code></pre><p>설치가 끝났다면 기본 셋팅값이 root 계정에서 동작이 되도록 설정되어 있다.<br>명령창에서 sudo 없이 subsonic만 입력해본다면 권한이 부족하다고 나올 거다.<br>개인이 혼자 사용한다면 그냥 sudo로 실행시켜도 문제가 없지만 오픈해두고 사용한다면 user 계정으로 동작 되도록 꼭 바꿔줘야 한다.</p>
+<pre><code>$ cd /etc/default
+$ sudo vim subsonic
 
+:%s/root/username/g
+:wq
+</code></pre><p><img src="https://i.imgur.com/350Iald.png" alt="1" title="root"></p>
+<p>저장하고 나왔다면 서비스를 restart 시켜준다.</p>
+<pre><code>$ sudo service subsonic restart
+$ subsonic
+</code></pre><p>입력하면 sudo 없이 subsonic 만 입력해도 권한이 부족하다고 안 뜨고 아래 사진과 같이 출력 된다면 정상적으로 변경이 된 것이다.<br><img src="https://i.imgur.com/vp56gS5.png" alt="2" title="subsonic start"></p>
+<p>설치가 정상적으로 됐는지 웹 브라우저에서 <a href="http://localhost:4040" target="_blank" rel="noopener">http://localhost:4040</a> 으로 접속해본다.<br>기본 계정은 id pw 동일 admin 이다.<br><img src="https://i.imgur.com/HKnr4cn.png" alt="3" title="web attach"></p>
+<h2 id="nginx-reverse-proxy-설정하기"><a href="#nginx-reverse-proxy-설정하기" class="headerlink" title="nginx reverse proxy 설정하기"></a>nginx reverse proxy 설정하기</h2><h3 id="subsonic-설정"><a href="#subsonic-설정" class="headerlink" title="subsonic 설정"></a>subsonic 설정</h3><p>subsonic 을 설치하고 접속하려면 항상 4040을 붙여서 접속해야 되는데 이 과정이 귀찮으니 nginx 로 reverse proxy 설정을 해보겠다.<br>(subsonic 만 설치 돼있다면 구동 포트를 80포트로 변경하면 되지만 80포트에서 웹 서비스가 동작 중이면 이와 같은 방법으로 설정한다)</p>
+<p>먼저 처음에 수정했던 /etc/default/subsonic 파일을 수정한다.</p>
+<pre><code>$ sudo vim /etc/default/subsonic
+</code></pre><p>파일을 열면 SUBSONIC_ARGS 항목뒤에 –max-memory=150 이라는 옵션값만 있을거다 이 옵션값을 아래와 같이 수정한다.</p>
+<pre><code>SUBSONIC_ARGS=&quot;--max-memory=1024 --context-path=/mus&quot;
+</code></pre><p>여기서 필자는 메모리를 1024MB로 늘려주고 <a href="http://localhost/mus" target="_blank" rel="noopener">http://localhost/mus</a> 로 접속되게 설정했다.<br>만약 mus 가 아니라 다른 값을 원한다면 –context-path=/원하는주소 를 입력 해준후 저장 한후 서비스를 재시작 해준다.</p>
+<pre><code>$ sudo service subsonic restart
+</code></pre><h3 id="Nginx-설정"><a href="#Nginx-설정" class="headerlink" title="Nginx 설정"></a>Nginx 설정</h3><p>nginx 는 /etc/nginx/sites-available 경로에 있는 default 파일을 수정해주면 된다.<br>server 단에 아래와 같이 추가해준다.</p>
+<pre><code>location /mus {
+            proxy_pass http://localhost:4040/mus;
+            access_log /var/log/nginx/sub.accrss.log;
+            error_log /var/log/nginx/sub.error.log;
+    }
+</code></pre><p>wq 로 저장하고 nginx 서비스를 재시작하고 <a href="http://localhost/mus" target="_blank" rel="noopener">http://localhost/mus</a> 로 접속하면 subsonic 이 접속 되는걸 확인할수 있다.</p>
+<p><img src="https://i.imgur.com/9jMknKd.png" alt="4" title="proxy"></p>
+<h2 id="Subsonic-소소한-셋팅"><a href="#Subsonic-소소한-셋팅" class="headerlink" title="Subsonic 소소한 셋팅"></a>Subsonic 소소한 셋팅</h2><h3 id="DSD-파일-재생시키기"><a href="#DSD-파일-재생시키기" class="headerlink" title="DSD 파일 재생시키기"></a>DSD 파일 재생시키기</h3><p><img src="https://i.imgur.com/DjsbmQx.png" alt="5" title="DSD"></p>
+<p>subsonic 에 접속후 설정에서 “일반” -&gt; “음악파일 종류” 에서 맨뒤에 사진과 같이 dff dsf 를 추가 한뒤 아래쪽 저장 버튼을 누르고 변환 탭으로 넘어간다.</p>
+<p><img src="https://i.imgur.com/pvyAkJa.png" alt="6" title="ffmpeg"></p>
+<p>“파일 변환 추가” 에서 아래와 같이 추가한다.</p>
+<pre><code>변환 이름 -&gt; DSD
+원본 파일 타입 -&gt; dff dsf
+결과 파일 타입 -&gt; flac 
+1  단계 -&gt; ffmpeg -i %s -map 0:0 -sample_fmt s32 -ar 384k -v 0 -f flac -
+</code></pre><p>추가해준후 저장 버튼을 누른다.<br>만약 이 과정으로도 dsd 파일을 못 불러 온다면 /var/subsonic/db 에 subsonic.data 파일을 지워주고 미디어 스캔을 다시 해주면 된다.</p>
+<h3 id="Subsonic-웹-페이지-수정하기"><a href="#Subsonic-웹-페이지-수정하기" class="headerlink" title="Subsonic 웹 페이지 수정하기"></a>Subsonic 웹 페이지 수정하기</h3><p>subsonic 웹은 JSP로 구성되어 있다.<br>경로는 보통 /var/subsonic/jetty/759abe/webapp/WEB-INF/jsp 위치에 있다.<br>여기서 jsp 파일을 수정해주면 된다.</p>
+<h3 id="Subsonic-미디어-스캔시-한글깨짐-문제-개선"><a href="#Subsonic-미디어-스캔시-한글깨짐-문제-개선" class="headerlink" title="Subsonic 미디어 스캔시 한글깨짐 문제 개선"></a>Subsonic 미디어 스캔시 한글깨짐 문제 개선</h3><ul>
+<li><a href="https://blog.naver.com/az001a/220909592441" target="_blank" rel="noopener">출처</a></li>
+</ul>
+<p>/usr/share/subsonic 에서 subsonic.sh* 을 수정해준다.</p>
+<p>파일 상단에 아래와 같이 추가해준다.</p>
+<pre><code>export LANG=&quot;ko_KR.UTF-8&quot;
+export LC_CTYPE=&quot;ko_KR.UTF-8&quot;
+</code></pre><p>추가가 완료 되면 아래로 내려와 -Djava.awt.headless=true \ 문자열 아래쪽에 아래와 같이 추가 해준다.</p>
+<pre><code>-Dfile.encoding=UTF8 \
+</code></pre><p>추가가 완료 되었으면 wq로 저장 한뒤 subsonic 서비스를 재시작 시켜준다.</p>
+<pre><code>$ sudo service subsonic restart
+</code></pre><h4 id="그래도-한글이-깨진다면…"><a href="#그래도-한글이-깨진다면…" class="headerlink" title="그래도 한글이 깨진다면….."></a>그래도 한글이 깨진다면…..</h4><pre><code>$ sudo apt install python-mutagen  
+</code></pre><p>설치후 한글이 mp3 파일이 있는 경로 이동후 아래와 같이 입력한다.</p>
+<pre><code>$ mid3iconv -e cp949 *.mp3
+</code></pre>
       
     </div>
 
@@ -540,11 +504,15 @@ count: 99 # 선 개수
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
           
-            <a href="/tags/Github/" rel="tag"># Github</a>
+            <a href="/tags/Music/" rel="tag"># Music</a>
           
-            <a href="/tags/Blog/" rel="tag"># Blog</a>
+            <a href="/tags/Media-server/" rel="tag"># Media server</a>
+          
+            <a href="/tags/Subsonic/" rel="tag"># Subsonic</a>
+          
+            <a href="/tags/Reverse-proxy/" rel="tag"># Reverse proxy</a>
           
         </div>
       
@@ -557,15 +525,15 @@ count: 99 # 선 개수
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/21/ngnix-install/" rel="next" title="Ubuntu에서 Hexo로 제작한 블로그 Nginx 이용하여 웹 구축하기">
+                <i class="fa fa-chevron-left"></i> Ubuntu에서 Hexo로 제작한 블로그 Nginx 이용하여 웹 구축하기
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/reading_progress/" rel="prev" title="Next themes reading progress 적용하기">
-                Next themes reading progress 적용하기 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -733,7 +701,7 @@ count: 99 # 선 개수
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-에서-Hexo-설치"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu 에서 Hexo 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#필요한것들"><span class="nav-number">1.1.</span> <span class="nav-text">필요한것들</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#설치-환경"><span class="nav-number">1.2.</span> <span class="nav-text">설치 환경</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs-Hexo-설치"><span class="nav-number">1.3.</span> <span class="nav-text">Nodejs, Hexo 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nodejs-설치"><span class="nav-number">1.3.1.</span> <span class="nav-text">Nodejs 설치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-설치"><span class="nav-number">1.3.2.</span> <span class="nav-text">Hexo 설치</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo-설정하기"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Hexo 설정하기</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-테마-설치와-움직이는-배경-사용하기"><span class="nav-number">1.4.</span> <span class="nav-text">Next 테마 설치와 움직이는 배경 사용하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-테마-설치"><span class="nav-number">1.4.1.</span> <span class="nav-text">Next 테마 설치</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#움직이는-배경-사용하기"><span class="nav-number">1.4.2.</span> <span class="nav-text">움직이는 배경 사용하기</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu-에서-Subsonic-설치-및-nginx-reverse-proxy-설정하기"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu 에서 Subsonic 설치 및 nginx reverse proxy 설정하기</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#준비물"><span class="nav-number">1.1.</span> <span class="nav-text">준비물</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#설치환경"><span class="nav-number">1.2.</span> <span class="nav-text">설치환경</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SubSonic-설치"><span class="nav-number">1.3.</span> <span class="nav-text">SubSonic 설치</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-reverse-proxy-설정하기"><span class="nav-number">1.4.</span> <span class="nav-text">nginx reverse proxy 설정하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#subsonic-설정"><span class="nav-number">1.4.1.</span> <span class="nav-text">subsonic 설정</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx-설정"><span class="nav-number">1.4.2.</span> <span class="nav-text">Nginx 설정</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsonic-소소한-셋팅"><span class="nav-number">1.5.</span> <span class="nav-text">Subsonic 소소한 셋팅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DSD-파일-재생시키기"><span class="nav-number">1.5.1.</span> <span class="nav-text">DSD 파일 재생시키기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subsonic-웹-페이지-수정하기"><span class="nav-number">1.5.2.</span> <span class="nav-text">Subsonic 웹 페이지 수정하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subsonic-미디어-스캔시-한글깨짐-문제-개선"><span class="nav-number">1.5.3.</span> <span class="nav-text">Subsonic 미디어 스캔시 한글깨짐 문제 개선</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#그래도-한글이-깨진다면…"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">그래도 한글이 깨진다면…..</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -898,9 +866,9 @@ count: 99 # 선 개수
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://tenn6871.github.io/2019/03/31/hexo-install-ubuntu/";
-    this.page.identifier = "2019/03/31/hexo-install-ubuntu/";
-    this.page.title = 'GitHub Hexo Blog 설치 및 Next 테마 설치하기';
+    this.page.url = "http://tenn6871.github.io/2019/05/05/subsonic/";
+    this.page.identifier = "2019/05/05/subsonic/";
+    this.page.title = 'Ubuntu에서 subsonic 설치 및 nginx reverse proxy 설정하고 DSD 파일 불러오기';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
